@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import dao.Response;
+import dao.ResultObj;
 import dao.StaffDetails;
 import dao.StudentDetails;
 import dao.User;
@@ -286,16 +287,18 @@ public class DbOperation {
 	}
 	
 	
-	public ArrayList<placementDetails> getMyResultDetaisl(StudentDetails user){
+	public ArrayList<ResultObj> getMyResultDetaisl(StudentDetails user){
 		
-		ArrayList<placementDetails> _Sports = new ArrayList<placementDetails>();
+		ArrayList<ResultObj> _Sports = new ArrayList<ResultObj>();
 		try{
 			System.out.println(user.getStudentUSN());
 			con = GetDbCon.getCon();
 			Statement getQuestion = con.createStatement();
-			ResultSet pla = getQuestion.executeQuery("SELECT * FROM ait_student.resultable where USN='' and branch='"+user.getBranch()+"' and sem='"+user.getSem()+"'");
+			ResultSet pla = getQuestion.executeQuery("SELECT * FROM ait_student.resultable where USN='"+user.getStudentUSN()+"' and branch='"+user.getBranch()+"' and sem='"+user.getSem()+"'");
 			while(pla.next()){
-				_Sports.add(new placementDetails(pla.getString(1)));
+				_Sports.add(new ResultObj(pla.getString(1),pla.getString(2),pla.getString(3),pla.getString(8),pla.getString(5),pla.getString(6),pla.getString(7),pla.getString(8),pla.getString(9),pla.getString(10),
+						pla.getString(11),pla.getString(12),pla.getString(13),pla.getString(14),pla.getString(15),pla.getString(16),pla.getString(17),pla.getString(18),pla.getString(19),pla.getString(20),
+						pla.getString(21),pla.getString(22),pla.getString(23),pla.getString(24),pla.getString(25),pla.getString(26)));
 			}
 		}catch(Exception e){
 			e.printStackTrace();

@@ -7,9 +7,22 @@ public class Response {
 	public String id;
 	public String branch;
 	public String sem;
+	public String USN;
 	
 	
 	
+	public String getUSN() {
+		return USN;
+	}
+
+
+
+	public void setUSN(String uSN) {
+		USN = uSN;
+	}
+
+
+
 	public boolean isStatus() {
 		return status;
 	}

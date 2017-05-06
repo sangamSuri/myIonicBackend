@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.feedback.model.Issuer;
 
 import dao.Response;
+import dao.ResultObj;
 import dao.StaffDetails;
 import dao.StudentDetails;
 import dao.User;
@@ -202,10 +203,10 @@ public class RestController {
 	
 	@RequestMapping(value="/result", method=RequestMethod.POST)
 	@ResponseBody
-	public ArrayList<placementDetails> result(@RequestBody StudentDetails user) {
+	public ArrayList<ResultObj> result(@RequestBody StudentDetails user) {
 		logger.info("Inside getAllIssuers() method...");
-		ArrayList<placementDetails> _placementDetails = new DbOperation().getMyResultDetaisl(user);
-		return _placementDetails;
+		ArrayList<ResultObj> _placementDetails = new DbOperation().getMyResultDetaisl(user);
+ 		return _placementDetails;
 	}
 	
 }
